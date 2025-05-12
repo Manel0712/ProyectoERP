@@ -21,7 +21,7 @@
             <!-- Clientes -->
             <div id="opcion" class="bg-white/70 rounded-xl shadow-xl p-10 text-center hover:shadow-2xl transition">
                 <h4 class="text-2xl font-bold mb-6">Clientes</h4>
-                <form action="clients" method="post">
+                <form action="clients" method="get">
                     @csrf
                     <button type="submit" class="bg-black text-white px-4 py-2 rounded-full">Acceder</button>
                 </form>
@@ -50,7 +50,7 @@
             <!-- Productos / servicios -->
             <div id="opcion" class="bg-white/70 rounded-xl shadow-xl p-10 text-center hover:shadow-2xl transition">
                 <h4 class="text-2xl font-bold mb-6">Productos / servicios</h4>
-                <form action="productesServeis" method="post">
+                <form action="productesServeis" method="get">
                     @csrf
                     <button type="submit" class="bg-black text-white px-4 py-2 rounded-full">Acceder</button>
                 </form>
