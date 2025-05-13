@@ -47,12 +47,43 @@
                 color: white;
                 padding: 20px;
                 transition: all 0.3s ease;
+                overflow-y: auto;
             }
 
             .sidebar.hidden {
                 width: 0;
                 padding: 0;
                 overflow: hidden;
+            }
+
+            .menu-list {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            .menu-title {
+                font-size: 1.2rem;
+                font-weight: bold;
+                margin: 1rem 0 0.5rem;
+                color: #f3f3f3;
+                border-bottom: 1px solid #444;
+                padding-bottom: 0.5rem;
+            }
+
+            .menu-link {
+                display: block;
+                color: #ddd;
+                text-decoration: none;
+                padding: 0.5rem 0;
+                transition: color 0.3s ease, background-color 0.3s ease;
+            }
+
+            .menu-link:hover {
+                color: white;
+                background-color: #444;
+                border-radius: 5px;
+                padding-left: 10px;
             }
 
             .content {
@@ -63,24 +94,34 @@
             }
 
             .toggle-btn {
-                margin-bottom: 20px;
-                padding: 5px 10px;
+                background-color: #6b46c1;
+                color: white;
+                border: none;
+                padding: 10px 15px;
                 font-size: 18px;
+                cursor: pointer;
+                border-radius: 5px;
+                transition: background-color 0.3s ease;
             }
-            #menu{
+
+            .toggle-btn:hover {
+                background-color: #5a3aa1;
+            }
+
+            #menu {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
                 background: linear-gradient(to right, #6b46c1, #ed64a6);
                 color: white;
                 padding: 1.5rem 2rem;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
             }
 
             h1 {
                 font-size: 2rem;
                 font-weight: bold;
                 line-height: 1.2;
-
+                margin: 0;
             }
 
             nav {
@@ -131,13 +172,14 @@
     </head>
 
     <body>
-        <div id="menu" class="bg-gradient-to-r from-purple-800 to-pink-500 text-white p-6 flex justify-between items-center">
+        <div id="menu" class="bg-gradient-to-r from-purple-800 to-pink-500 text-white p-6 flex items-center">
+            <button class="toggle-btn mr-1" onclick="toggleSidebar()">☰</button>
             <a href="dashboard" class="text-decoration-none">
-                <h1 class="text-3xl font-bold leading-tight text-white">
-                MERCH<br>NETIC
+                <h1 class="text-1 font-bold leading-tight text-white">
+                    MERCH<br>NETIC
                 </h1>
             </a>
-            <nav class="space-x-6 font-semibold">
+            <nav class="ml-auto space-x-6 font-semibold">
                 <a href="clients" class="hover:underline">CLIENTES</a>
                 <a href="#" class="hover:underline">VENTA/PROPUESTAS</a>
                 <a href="productesServeis" class="hover:underline">PRODUCTES</a>
@@ -150,14 +192,24 @@
         <main>
         <div class="layout">
             <div id="sidebar" class="sidebar">
-                <ul>
-                <li>Dashboard</li>
-                <li>Comandes</li>
-                <li>Clients</li>
+                <ul class="menu-list">
+                    <li class="menu-title">Dashboard</li>
+                    <li><a href="dashboard" class="menu-link">Inicio</a></li>
+                    <li class="menu-title">Clientes</li>
+                    <li><a href="clients" class="menu-link">Ver clientes</a></li>
+                    <li><a href="clients/create" class="menu-link">Añadir clientes</a></li>
+                    <li class="menu-title">Ventas/Propuestas</li>
+                    <li><a href="#" class="menu-link">Ver ventas</a></li>
+                    <li><a href="#" class="menu-link">Añadir ventas</a></li>
+                    <li class="menu-title">Productos</li>
+                    <li><a href="productesServeis" class="menu-link">Ver productos</a></li>
+                    <li><a href="productesServeis/create" class="menu-link">Añadir productos</a></li>
+                    <li class="menu-title">Administración</li>
+                    <li><a href="#" class="menu-link">Ver administración</a></li>
+                    <li><a href="#" class="menu-link">Añadir administración</a></li>
                 </ul>
             </div>
             <div class="content">
-                <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
                 @yield("content")
             </div>
         </div>
