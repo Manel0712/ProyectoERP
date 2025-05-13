@@ -1,18 +1,7 @@
 @extends("master")
 
 @section("header")
-    <div id="menu" class="bg-gradient-to-r from-purple-800 to-pink-500 text-white p-6 flex justify-between items-center">
-        <h1 class="text-3xl font-bold leading-tight">
-            MERCH<br>NETIC
-        </h1>
-
-        <nav class="space-x-6 font-semibold">
-            <a href="#" class="hover:underline">CLIENTES</a>
-            <a href="#" class="hover:underline">VENTA/PROPUESTAS</a>
-            <a href="#" class="hover:underline">STOCK</a>
-            <a href="#" class="hover:underline">ADMINISTRACIÓN</a>
-        </nav>
-    </div>
+    
 @endsection
 
 @section("content")

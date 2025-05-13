@@ -1,12 +1,6 @@
 @extends("master")
 
 @section("header")
-    <div id="menu" class="bg-gradient-to-r from-purple-800 to-pink-500 text-white p-6 flex justify-between items-center">
-        <h1 class="text-3xl font-bold">CLIENTS</h1>
-        <nav class="space-x-6 font-semibold">
-            <a href="/clients/create" class="btn-afegir">Afegir Client</a>
-        </nav>
-    </div>
 @endsection
 
 @section("content")
