@@ -1,9 +1,6 @@
 @extends("master")
 
 @section("header")
-    <div class="text-center my-4">
-        <h1 class="display-4">PRODUCTES/SERVEIS</h1>
-    </div>
 @endsection
 
 @section("content")
