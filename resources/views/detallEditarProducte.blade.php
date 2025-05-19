@@ -19,7 +19,7 @@
     <div class="container my-5">
         <div class="card shadow">
             <div class="card-body">
-                <form action="/productesServeis" method="POST">
+                <form action="/productesServeis/{{ $producte->id }}" method="POST">
                     @method('PUT')
                     @csrf
                     <div class="mb-3">
