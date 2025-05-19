@@ -28,9 +28,8 @@
             <!-- Administración del sistema -->
             <div id="opcion" class="bg-white/70 rounded-xl shadow-xl p-10 text-center hover:shadow-2xl transition">
                 <h4 class="text-2xl font-bold mb-6">Administración del sistema</h4>
-                <form action="accederModulo" method="post">
+                <form action="administracio" method="get">
                     @csrf
-                    <input type="hidden" name="modulo" value="Administracion">
                     <button type="submit" class="bg-black text-white px-4 py-2 rounded-full">Acceder</button>
                 </form>
             </div>
