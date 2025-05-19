@@ -42,34 +42,48 @@ class UsuariController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Usuari $usuari)
+    public function show(Usuari $administracio)
     {
-        return view("detallEditarUsuari", ["usuari"=>$usuari, "estat"=>false, "editar"=>false]);
+        return view("detallEditarUsuari", ["usuari"=>$administracio, "estat"=>false, "editar"=>false]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Usuari $usuari)
+    public function edit(Usuari $administracio)
     {
-        return view("detallEditarUsuari", ["usuari"=>$usuari, "estat"=>false, "editar"=>true]);
+        return view("detallEditarUsuari", ["usuari"=>$administracio, "estat"=>false, "editar"=>true]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Usuari $usuari)
+    public function update(Request $request, Usuari $administracio)
     {
-        return view("detallEditarUsuari", ["usuari"=>$usuari, "estat"=>true, "editar"=>true]);
+        if ($administracio->isDirty('password')) {
+            $passwordHash = Hash::make($request->password);
+            $administracio->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => $passwordHash,
+            ]);
+        }
+        else {
+            $administracio->update([
+                'name' => $request->name,
+                'email' => $request->email,
+            ]);
+        }
+        return view("detallEditarUsuari", ["usuari"=>$administracio, "estat"=>true, "editar"=>true]);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Usuari $usuari)
+    public function destroy(Usuari $administracio)
     {
-        $usuari->delete();
+        $administracio->delete();
         $usuaris = Usuari::all();
-        return view("administracio", ["usuarios"=>$usuarios]);
+        return view("administracio", ["usuaris"=>$usuaris]);
     }
 }
