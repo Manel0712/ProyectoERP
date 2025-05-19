@@ -15,11 +15,11 @@
     <div class="container my-5">
         <div class="card shadow">
             <div class="card-body">
-                <form action="/clients" method="POST">
+                <form action="/administracio" method="POST">
                     @csrf
                     <div class="mb-3">
                         <label for="nom" class="form-label">Nom</label>
-                        <input type="text" id="nom" name="first-name" class="form-control" required>
+                        <input type="text" id="nom" name="name" class="form-control" required>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
@@ -29,8 +29,8 @@
                         <label for="password" class="form-label">Password</label>
                         <input type="password" id="password" name="password" class="form-control" required>
                     </div>
-                    <button type="submit" class="btn btn-primary">Afegir Client</button>
-                    <a href="/clients" class="btn btn-primary">
+                    <button type="submit" class="btn btn-primary">Afegir Usuari</button>
+                    <a href="/administracio" class="btn btn-primary">
                         Sortir
                     </a>
                 </form>

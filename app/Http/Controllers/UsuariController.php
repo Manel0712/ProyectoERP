@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Usuari;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UsuariController extends Controller
 {
@@ -29,7 +30,12 @@ class UsuariController extends Controller
      */
     public function store(Request $request)
     {
-        $usuari = Usuari::create($request->all());
+        $passwordHash = Hash::make($request->password);
+        $usuari = Usuari::create([
+            "name" => $request->name,
+            "email" => $request->email,
+            "password" => $passwordHash,
+        ]);
         return view("afegirUsuari", ["estat"=>true]);
     }
 
