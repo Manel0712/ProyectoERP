@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\clientController;
 use App\Http\Controllers\producteServeiController;
+use App\Http\Controllers\UsuariController;
 
 Route::view('/', 'welcome');
 
@@ -21,5 +22,7 @@ Route::get('/dashboard', function() {
 Route::resource('/clients', clientController::class);
 
 Route::resource('/productesServeis', producteServeiController::class);
+
+Route::resource('/administracio', UsuariController::class);
 
 require __DIR__.'/auth.php';
