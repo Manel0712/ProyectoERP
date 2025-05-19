@@ -39,6 +39,7 @@
                 display: flex;
                 height: calc(100vh - 60px); /* Resta la altura del topbar */
                 transition: all 0.3s ease;
+                min-height: calc(100vh - 60px); /* Asegura que ocupe todo el alto */
             }
 
             .sidebar {
@@ -48,6 +49,9 @@
                 padding: 20px;
                 transition: all 0.3s ease;
                 overflow-y: auto;
+                height: 100vh;
+                min-height: 100vh;
+                position: relative;
             }
 
             .sidebar.hidden {
