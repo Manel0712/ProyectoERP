@@ -37,9 +37,7 @@
 
             .layout {
                 display: flex;
-                height: calc(100vh - 60px); /* Resta la altura del topbar */
-                transition: all 0.3s ease;
-                min-height: calc(100vh - 60px); /* Asegura que ocupe todo el alto */
+                min-height: 100vh;
             }
 
             .sidebar {
@@ -51,7 +49,10 @@
                 overflow-y: auto;
                 height: 100vh;
                 min-height: 100vh;
-                position: relative;
+                position: fixed; /* Fija la barra lateral */
+                top: 0;
+                left: 0;
+                z-index: 1000;
             }
 
             .sidebar.hidden {
@@ -94,6 +95,7 @@
                 flex-grow: 1;
                 background-color: white;
                 padding: 20px;
+                margin-left: 250px; /* Deja espacio para la sidebar fija */
                 transition: all 0.3s ease;
             }
 
@@ -209,8 +211,8 @@
                     <li><a href="productesServeis" class="menu-link">Ver productos</a></li>
                     <li><a href="productesServeis/create" class="menu-link">Añadir productos</a></li>
                     <li class="menu-title">Administración</li>
-                    <li><a href="#" class="menu-link">Ver administración</a></li>
-                    <li><a href="#" class="menu-link">Añadir administración</a></li>
+                    <li><a href="/administracio" class="menu-link">Ver administración</a></li>
+                    <li><a href="/administracio/create" class="menu-link">Añadir administración</a></li>
                 </ul>
             </div>
             <div class="content">
