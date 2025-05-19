@@ -42,12 +42,28 @@
                             <option value="{{ $tipo['id'] }}">{{ $tipo["description"] }}</option>
                         @endforeach
                     </select>--}}
-                    <button type="submit" class="btn btn-primary">Afegir Client</button>
-                    <a href="/clients" class="btn btn-primary">
+                    <button type="submit" class="btn btn-gray">Afegir Client</button>
+                    <a href="/clients" class="btn btn-gray">
                         Sortir
                     </a>
                 </form>
             </div>
         </div>
     </div>
+    <style>
+        .btn-gray {
+            background-color: #6c757d;
+            color: #fff;
+            border: none;
+            font-weight: bold;
+            border-radius: 50px;
+            padding: 0.5rem 1.5rem;
+            transition: background 0.3s, color 0.3s;
+            margin-right: 0.5rem;
+        }
+        .btn-gray:hover, .btn-gray:focus {
+            background-color: #495057;
+            color: #fff;
+        }
+    </style>
 @endsection
