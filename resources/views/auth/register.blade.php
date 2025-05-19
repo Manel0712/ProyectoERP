@@ -58,3 +58,65 @@
         </form>
     </x-authentication-card>
 </x-guest-layout>
+
+<script>
+const SUPABASE_URL = 'https://uhaswgfpijyrlpxmaygo.supabase.co/';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVoYXN3Z2ZwaWp5cmxweG1heWdvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQwMzg2MDQsImV4cCI6MjA1OTYxNDYwNH0.3iPKrdInDNtywOF8yUe0PV0G-Uekxpc0ySjl5c0kCIA'; // Truncado por seguridad
+
+// Crear cliente de Supabase con la ANON_KEY (clave pública)
+const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+const form = document.getElementById('signup-form');
+const message = document.getElementById('message');
+
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirm-password').value;
+
+    // Validación de contraseñas
+    if (password !== confirmPassword) {
+        message.textContent = 'Las contraseñas no coinciden.';
+        message.style.color = 'red';
+        return;
+    }
+
+    // Registrar usuario en Supabase
+    const { data, error } = await supabaseClient.auth.signUp({
+        email,
+        password,
+    });
+
+    if (error) {
+        message.textContent = 'Error: ' + error.message;
+        message.style.color = 'red';
+    } else {
+        // Si el registro en Supabase fue exitoso, registrar también en Laravel
+        fetch('/register-supabase', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            },
+            body: JSON.stringify({ email, password })
+        })
+        .then(response => response.json())
+        .then(result => {
+            if (result.success) {
+                message.textContent = 'Cuenta creada correctamente en ambos sistemas. Por favor, revisa tu correo para confirmar tu cuenta.';
+                message.style.color = 'lightgreen';
+                form.reset();
+            } else {
+                message.textContent = 'Error al registrar en Laravel: ' + (result.message || 'Error desconocido');
+                message.style.color = 'red';
+            }
+        })
+        .catch(err => {
+            message.textContent = 'Error al registrar en Laravel: ' + err.message;
+            message.style.color = 'red';
+        });
+    }
+});
+</script>

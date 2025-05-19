@@ -46,3 +46,40 @@
         </form>
     </x-authentication-card>
 </x-guest-layout>
+
+<script>
+    const SUPABASE_URL = 'https://uhaswgfpijyrlpxmaygo.supabase.co/';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVoYXN3Z2ZwaWp5cmxweG1heWdvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQwMzg2MDQsImV4cCI6MjA1OTYxNDYwNH0.3iPKrdInDNtywOF8yUe0PV0G-Uekxpc0ySjl5c0kCIA';
+    const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    const form = document.getElementById('login-form');
+    const message = document.getElementById('message');
+    const signupButton = document.getElementById('signup-button');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+
+      if (error) {
+  message.textContent = 'Error: ' + error.message;
+  message.style.color = '#f08080';
+} else {
+  message.textContent = 'Login exitoso. Redirigiendo...';
+  message.style.color = '#90ee90';
+  localStorage.setItem('access_token', data.session.access_token);
+  window.location.href = '/dashboard'; // Redirección al dashboard
+}
+
+    });
+
+    signupButton.addEventListener('click', () => {
+      window.location.href = '/signup'; // Reemplaza '/signup' con la URL de tu página de registro
+    });
+  </script>
