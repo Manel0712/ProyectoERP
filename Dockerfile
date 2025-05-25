@@ -2,11 +2,11 @@ FROM php:8.2-apache
 
 RUN a2enmod rewrite
 
-RUN apt-get update && apt-get install -y \
-    libzip-dev zip unzip git curl gnupg nodejs npm libpq-dev libonig-dev libicu-dev libxml2-dev \
+RUN apt-get update && apt-get install -y curl gnupg zip unzip git libzip-dev libpq-dev libonig-dev libicu-dev libxml2-dev \
+    && curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
+    && apt-get install -y nodejs \
     && docker-php-ext-install zip pdo pdo_mysql pdo_pgsql mbstring intl xml opcache \
-    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
-    && npm install -g npm@latest
+    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 RUN sed -ri -e 's!/var/www/html!/var/www/html/public!g' /etc/apache2/sites-available/*.conf
 
