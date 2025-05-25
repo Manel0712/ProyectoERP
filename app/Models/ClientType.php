@@ -7,6 +7,8 @@ use App\Models\Client;
 
 class ClientType extends Model
 {
+    protected $table = "client-types";
+    
     protected $fillable = [
         "description"
     ];

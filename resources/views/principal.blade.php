@@ -18,9 +18,8 @@
             <!-- Venta / propuestas -->
             <div id="opcion" class="bg-white/70 rounded-xl shadow-xl p-10 text-center hover:shadow-2xl transition">
                 <h4 class="text-2xl font-bold mb-6">Venta / propuestas</h4>
-                <form action="accederModulo" method="post">
+                <form action="ventas" method="get">
                     @csrf
-                    <input type="hidden" name="modulo" value="Ventas">
                     <button type="submit" class="bg-black text-white px-4 py-2 rounded-full">Acceder</button>
                 </form>
             </div>

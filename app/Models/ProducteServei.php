@@ -14,5 +14,8 @@ class ProducteServei extends Model
         "price",
         "stock",
         "entry_date",
+        "provider",
     ];
+
+    public $timestamps = false;
 }

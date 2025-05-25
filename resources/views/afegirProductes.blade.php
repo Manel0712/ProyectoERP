@@ -37,28 +37,16 @@
                         <label for="dataEntrada" class="form-label">Data d'entrada</label>
                         <input type="date" id="dataEntrada" name="entry_date" class="form-control" required>
                     </div>
-                    <button type="submit" class="btn btn-gray">Afegir Producte</button>
-                    <a href="/productesServeis" class="btn btn-grayy">
+                    <div class="mb-3">
+                        <label for="provider" class="form-label">Proveïdor</label>
+                        <input type="text" id="provider" name="provider" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Afegir Producte</button>
+                    <a href="/productesServeis" class="btn btn-primary">
                         Sortir
                     </a>
                 </form>
             </div>
         </div>
     </div>
-    <style>
-        .btn-gray {
-            background-color: #6c757d;
-            color: #fff;
-            border: none;
-            font-weight: bold;
-            border-radius: 50px;
-            padding: 0.5rem 1.5rem;
-            transition: background 0.3s, color 0.3s;
-            margin-right: 0.5rem;
-        }
-        .btn-gray:hover, .btn-gray:focus {
-            background-color: #495057;
-            color: #fff;
-        }
-    </style>
 @endsection

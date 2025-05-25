@@ -36,35 +36,40 @@ class producteServeiController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(ProducteServei $producte)
+    public function show(ProducteServei $productesServei)
     {
-        return view("detallEditarProducte", ["producte"=>$producte, "estat"=>false, "editar"=>false]);
+        return view("detallEditarProducte", ["producte"=>$productesServei, "estat"=>false, "editar"=>false]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(ProducteServei $producte)
+    public function edit(ProducteServei $productesServei)
     {
-        return view("detallEditarProducte", ["producte"=>$producte, "estat"=>false, "editar"=>true]);
+        return view("detallEditarProducte", ["producte"=>$productesServei, "estat"=>false, "editar"=>true]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, ProducteServei $producte)
+    public function update(Request $request, ProducteServei $productesServei)
     {
         $producte->update($request->all());
-        return view("detallEditarProducte", ["producte"=>$producte, "estat"=>true, "editar"=>true]);
+        return view("detallEditarProducte", ["producte"=>$productesServei, "estat"=>true, "editar"=>true]);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(ProducteServei $producte)
+    public function destroy(ProducteServei $productesServei)
     {
-        $producte->delete();
+        $productesServei->delete();
         $productes = ProducteServei::all();
+        return view("productes", ["productes"=>$productes]);
+    }
+
+    public function productesProveidor(Request $request) {
+        $productes = ProducteServei::where("provider", $request->provider)->get();
         return view("productes", ["productes"=>$productes]);
     }
 }

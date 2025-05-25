@@ -187,9 +187,9 @@
             </a>
             <nav class="ml-auto space-x-6 font-semibold">
                 <a href="clients" class="hover:underline">CLIENTES</a>
-                <a href="#" class="hover:underline">VENTA/PROPUESTAS</a>
+                <a href="ventas" class="hover:underline">VENTA/PROPUESTAS</a>
                 <a href="productesServeis" class="hover:underline">PRODUCTES</a>
-                <a href="#" class="hover:underline">ADMINISTRACIÓN</a>
+                <a href="administracio" class="hover:underline">ADMINISTRACIÓN</a>
             </nav>
         </div>
         <header>
@@ -202,14 +202,14 @@
                     <li class="menu-title">Dashboard</li>
                     <li><a href="dashboard" class="menu-link">Inicio</a></li>
                     <li class="menu-title">Clientes</li>
-                    <li><a href="clients" class="menu-link">Ver clientes</a></li>
-                    <li><a href="clients/create" class="menu-link">Añadir clientes</a></li>
+                    <li><a href="/clients" class="menu-link">Ver clientes</a></li>
+                    <li><a href="/clients/create" class="menu-link">Añadir clientes</a></li>
                     <li class="menu-title">Ventas/Propuestas</li>
-                    <li><a href="#" class="menu-link">Ver ventas</a></li>
-                    <li><a href="#" class="menu-link">Añadir ventas</a></li>
+                    <li><a href="/ventas" class="menu-link">Ver ventas</a></li>
+                    <li><a href="/ventas/create" class="menu-link">Añadir ventas</a></li>
                     <li class="menu-title">Productos</li>
-                    <li><a href="productesServeis" class="menu-link">Ver productos</a></li>
-                    <li><a href="productesServeis/create" class="menu-link">Añadir productos</a></li>
+                    <li><a href="/productesServeis" class="menu-link">Ver productos</a></li>
+                    <li><a href="/productesServeis/create" class="menu-link">Añadir productos</a></li>
                     <li class="menu-title">Administración</li>
                     <li><a href="/administracio" class="menu-link">Ver administración</a></li>
                     <li><a href="/administracio/create" class="menu-link">Añadir administración</a></li>
