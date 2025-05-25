@@ -1,12 +1,14 @@
-# Etapa 1: Node.js para frontend
+# Etapa 1: Node.js
 FROM node:18 AS node-builder
 
 WORKDIR /app
 
 COPY package*.json ./
+
 RUN npm install
 
 COPY . .
+
 RUN npm run build
 
 # Etapa 2: PHP + Apache
