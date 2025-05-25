@@ -7,8 +7,10 @@ RUN apt-get update && apt-get install -y \
     git zip unzip curl gnupg libzip-dev libpq-dev ca-certificates \
     && docker-php-ext-install pdo pdo_pgsql zip
 
-RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
-    && apt-get install -y nodejs
+# Instalar Node.js 18 correctamente en pasos separados
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x -o nodesource.sh
+RUN bash nodesource.sh
+RUN apt-get install -y nodejs
 
 RUN node -v && npm -v
 
@@ -21,4 +23,5 @@ RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cac
 
 WORKDIR /var/www/html
 
-RUN npm install && npm run build
+RUN npm install
+RUN npm run build
