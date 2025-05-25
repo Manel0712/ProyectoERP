@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\clientController;
 use App\Http\Controllers\producteServeiController;
 use App\Http\Controllers\UsuariController;
+use App\Http\Controllers\VentaController;
+use App\Http\Controllers\DetalleVentaController;
 
 Route::view('/', 'welcome');
 

@@ -13,7 +13,7 @@
                 <form action="/DetalleVenta/create/{{ $ventaDetalles[0]['proposalID'] }}" method="get">
                     @csrf
                     <button type="submit" class="btn btn-info text-white rounded-full px-4 py-2" style="margin-left: 87.70%;">
-                        Add product
+                        Afegir prodructe
                     </button>
                 </form>
             </div>
