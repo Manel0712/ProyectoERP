@@ -4,9 +4,11 @@ RUN a2enmod rewrite
 
 RUN sed -ri -e 's!/var/www/html!/var/www/html/public!g' /etc/apache2/sites-available/*.conf
 
-RUN apt-get update && apt-get install -y \
-    libzip-dev zip unzip git curl gnupg \
-    && docker-php-ext-install zip pdo pdo_pgsql
+RUN apt-get update \
+    && apt-get install -y libzip-dev zip unzip git curl gnupg \
+    && docker-php-ext-install zip pdo pdo_pgsql \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
     && apt-get install -y nodejs
