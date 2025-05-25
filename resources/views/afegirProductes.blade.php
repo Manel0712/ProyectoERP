@@ -37,6 +37,10 @@
                         <label for="dataEntrada" class="form-label">Data d'entrada</label>
                         <input type="date" id="dataEntrada" name="entry_date" class="form-control" required>
                     </div>
+                    <div class="mb-3">
+                        <label for="provider" class="form-label">Proveïdor</label>
+                        <input type="text" id="provider" name="provider" class="form-control" required>
+                    </div>
                     <button type="submit" class="btn btn-primary">Afegir Producte</button>
                     <a href="/productesServeis" class="btn btn-primary">
                         Sortir

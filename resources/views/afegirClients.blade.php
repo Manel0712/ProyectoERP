@@ -19,29 +19,32 @@
                     @csrf
                     <div class="mb-3">
                         <label for="nom" class="form-label">Nom</label>
-                        <input type="text" id="nom" name="first-name" class="form-control" required>
+                        <input type="text" id="nom" name="name" class="form-control" required>
                     </div>
                     <div class="mb-3">
                         <label for="cognoms" class="form-label">Cognoms</label>
-                        <input type="text" id="cognoms" name="last-name" class="form-control" required>
+                        <input type="text" id="cognoms" name="cognoms" class="form-control" required>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
                         <input type="email" id="email" name="email" class="form-control" required>
                     </div>
                     <div class="mb-3">
-                        <label for="phone" class="form-label">Phone</label>
+                        <label for="phone" class="form-label">Numero de telefon</label>
                         <input type="text" id="phone" name="phone" class="form-control" pattern="^\+?[0-9\s\-\(\)]{7,20}$" required>
                     </div>
                     <div class="mb-3">
-                        <label for="address" class="form-label">Address</label>
+                        <label for="address" class="form-label">Adreça</label>
                         <input type="text" id="address" name="address" class="form-control" required>
                     </div>
-                    {{--<select name="pais" required>
-                        @foreach($tipos as $tipo)
-                            <option value="{{ $tipo['id'] }}">{{ $tipo["description"] }}</option>
-                        @endforeach
-                    </select>--}}
+                    <div>
+                        <label for="type" class="form-label">Tipus de client</label>
+                        <select id="type" name="type" class="form-control" required>
+                            @foreach($tipos as $tipo)
+                                <option value="{{ $tipo['id'] }}">{{ $tipo["description"] }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <button type="submit" class="btn btn-primary">Afegir Client</button>
                     <a href="/clients" class="btn btn-primary">
                         Sortir
