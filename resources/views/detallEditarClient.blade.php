@@ -42,11 +42,11 @@
                         <label for="address" class="form-label">Address</label>
                         <input type="text" id="address" name="address" class="form-control" required @if (!$editar) readonly @endif value="{{ $client['address'] }}">
                     </div>
-                    {{--<select name="pais" required @if (!$editar) readonly @endif>
+                    <select name="client-typeID" required @if (!$editar) readonly @endif>
                         @foreach($tipos as $tipo)
-                            <option value="{{ $tipo['id'] }}" {{ $tipo == $client["tipoCliente"]["description"] ? 'selected' : '' }}>{{ $tipo["description"] }}</option>
+                            <option value="{{ $tipo['id'] }}" {{ $tipo == $client["tipoCliente"] ? 'selected' : '' }}>{{ $tipo["description"] }}</option>
                         @endforeach
-                    </select>--}}
+                    </select>
                     @if ($editar)
                         <button type="submit" class="btn btn-primary">Editar Client</button>
                     @endif

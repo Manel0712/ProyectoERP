@@ -42,6 +42,10 @@
                         <label for="dataEntrada" class="form-label">Data d'entrada</label>
                         <input type="date" id="dataEntrada" name="entry_date" class="form-control" required @if (!$editar) readonly @endif value="{{ $producte['entry_date'] }}">
                     </div>
+                    <div class="mb-3">
+                        <label for="provider" class="form-label">Proveïdor</label>
+                        <input type="text" id="provider" name="provider" class="form-control" required @if (!$editar) readonly @endif value="{{ $producte['provider'] }}">
+                    </div>
                     @if ($editar)
                         <button type="submit" class="btn btn-primary">Editar Producte</button>
                     @endif

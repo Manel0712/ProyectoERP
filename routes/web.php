@@ -21,8 +21,20 @@ Route::get('/dashboard', function() {
 
 Route::resource('/clients', clientController::class);
 
+Route::get('/productes/proveidor', [producteServeiController::class, "productesProveidor"]);
+
 Route::resource('/productesServeis', producteServeiController::class);
 
 Route::resource('/administracio', UsuariController::class);
+
+Route::resource('/ventas', VentaController::class);
+
+Route::get('/DetalleVenta/{venta}', [DetalleVentaController::class, "index"]);
+
+Route::get('/DetalleVenta/create/{detalleventa}', [DetalleVentaController::class, "create"]);
+
+Route::post('/añadirDetalleVenta/{detalleventa}', [DetalleVentaController::class, "store"]);
+
+Route::resource('/DetalleVentas', DetalleVentaController::class);
 
 require __DIR__.'/auth.php';

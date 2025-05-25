@@ -22,8 +22,8 @@ class clientController extends Controller
      */
     public function create()
     {
-        /* $tipos = ClientType::all(); */
-        return view("afegirClients", [/*"tipos" => $tipos,*/ "estat"=>false]);
+        $tipos = ClientType::all();
+        return view("afegirClients", ["tipos" => $tipos, "estat"=>false]);
     }
 
     /**
@@ -31,9 +31,16 @@ class clientController extends Controller
      */
     public function store(Request $request)
     {
-        $client = Client::create($request->all());
-        /* $tipos = ClientType::all(); */
-        return view("afegirClients", [/*"tipos" => $tipos,*/ "estat"=>true]);
+        $client = Client::create([
+            "first-name" => $request->name,
+            "last-name" => $request->cognoms,
+            "email" => $request->email,
+            "phone" => $request->phone,
+            "address" => $request->address,
+            "client-typeID" => $request->type,
+        ]);
+        $tipos = ClientType::all();
+        return view("afegirClients", ["tipos" => $tipos, "estat"=>true]);
     }
 
     /**
@@ -41,8 +48,8 @@ class clientController extends Controller
      */
     public function show(Client $client)
     {
-        /* $tipos = ClientType::all(); */
-        return view("detallEditarClient", ["client"=>$client, /*"tipos" => $tipos,*/ "estat"=>false, "editar"=>false]);
+        $tipos = ClientType::all();
+        return view("detallEditarClient", ["client"=>$client, "tipos" => $tipos, "estat"=>false, "editar"=>false]);
     }
 
     /**
@@ -50,8 +57,8 @@ class clientController extends Controller
      */
     public function edit(Client $client)
     {
-        /* $tipos = ClientType::all(); */
-        return view("detallEditarClient", ["client"=>$client, /*"tipos" => $tipos,*/ "estat"=>false, "editar"=>true]);
+        $tipos = ClientType::all();
+        return view("detallEditarClient", ["client"=>$client, "tipos" => $tipos, "estat"=>false, "editar"=>true]);
     }
 
     /**
@@ -60,7 +67,7 @@ class clientController extends Controller
     public function update(Request $request, Client $client)
     {
         $client->update($request->all());
-        /* $tipos = ClientType::all(); */
+        $tipos = ClientType::all();
         return view("detallEditarClient", ["client"=>$client, /*"tipos" => $tipos,*/ "estat"=>true, "editar"=>true]);
     }
 

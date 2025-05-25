@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\ClientType;
+use App\Models\Venta;
 
 class Client extends Model
 {
@@ -18,6 +19,13 @@ class Client extends Model
 
     public function tipoCliente()
     {
-        return $this->belongsTo(ClientType::class, 'tipo_cliente_id');
+        return $this->belongsTo(ClientType::class, 'client-typeID');
     }
+
+    public function ventas()
+    {
+        return $this->hasMany(Venta::class, 'clientID');
+    }
+
+    public $timestamps = false;
 }
