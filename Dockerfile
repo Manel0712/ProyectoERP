@@ -1,17 +1,16 @@
 FROM php:8.2-apache
 
 RUN a2enmod rewrite
-
 RUN sed -ri -e 's!/var/www/html!/var/www/html/public!g' /etc/apache2/sites-available/*.conf
 
 RUN apt-get update && apt-get install -y \
-    git zip unzip curl gnupg \
-    libzip-dev libpq-dev \
-    && docker-php-ext-install pdo pdo_pgsql zip \
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
+    git zip unzip curl gnupg libzip-dev libpq-dev ca-certificates \
+    && docker-php-ext-install pdo pdo_pgsql zip
 
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
     && apt-get install -y nodejs
+
+RUN node -v && npm -v
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
